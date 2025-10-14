@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: url("min.jpg") no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+    }
+
+    .decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+    .circle-1 {
+      width: 200px;
+      height: 200px;
+      background: pink;
+      top: 50px;
+      left: 50px;
+    }
+    .circle-2 {
+      width: 150px;
+      height: 150px;
+      background: lightblue;
+      bottom: 50px;
+      right: 50px;
+    }
+
+    .form-container {
+      background: rgba(173, 216, 230, 0.7);
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .form-description {
+      text-align: center;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group,
+    fieldset {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .full-width {
+      grid-column: span 2;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .required::after {
+      content: " *";
+      color: red;
+    }
+
+    input, select, textarea, button {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .file-info {
+      font-size: 12px;
+      color: #555;
+    }
+
+    .checkbox-group, .radio-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .reset-btn {
+      background: #ccc;
+    }
+    .reset-btn:hover {
+      background: #aaa;
+    }
+    button[type="submit"] {
+      background: #333;
+      color: #fff;
+    }
+    button[type="submit"]:hover {
+      background: #555;
+    }
+
+    .link {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorative elements -->
+  <div class="decorative-circle circle-1"></div>
+  <div class="decorative-circle circle-2"></div>
+
+  <div class="form-container">
+    <h1>Universal Input Form</h1>
+    <p class="form-description">Please fill out all required fields marked with an asterisk (*)</p>
+
+    <form id="universalForm">
+      <div class="form-grid">
+
+        <!-- Text Input -->
+        <div class="form-group">
+          <label class="required">Full Name:</label>
+          <input type="text" placeholder="John Doe" required>
+        </div>
+
+        <!-- Email Input -->
+        <div class="form-group">
+          <label class="required">Email:</label>
+          <input type="email" placeholder="john@example.com" required>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <label class="required">Password:</label>
+          <input type="password" minlength="8" required>
+          <p class="file-info">Must be at least 8 characters long</p>
+        </div>
+
+        <!-- Number Input -->
+        <div class="form-group">
+          <label>Age:</label>
+          <input type="number" min="18" max="100" placeholder="18">
+        </div>
+
+        <!-- Tel Input -->
+        <div class="form-group">
+          <label>Phone:</label>
+          <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890">
+        </div>
+
+        <!-- Date Input -->
+        <div class="form-group">
+          <label>Birth Date:</label>
+          <input type="date">
+        </div>
+
+        <!-- Time Input -->
+        <div class="form-group">
+          <label>Preferred Time:</label>
+          <input type="time">
+        </div>
+        
+  <div class="form-group">
+    <label>Satisfaction Level:</label>
+    <input type="range" min="1" max="10" value="5" class="satisfaction-slider">
+    <p class="file-info">Slide to rate your experience (1-10): <span id="satisfaction-value">5</span></p>
+</div>
+
+<script>
+const slider = document.querySelector('.satisfaction-slider');
+const valueDisplay = document.getElementById('satisfaction-value');
+
+slider.addEventListener('input', function() {
+    valueDisplay.textContent = slider.value;
+});
+</script>
+
+
+        <!-- Color Input -->
+        <div class="form-group">
+          <label>Favorite Color:</label>
+          <input type="color" value="#ff4081">
+        </div>
+
+        <!-- File Input -->
+        <div class="form-group full-width">
+          <label>Upload Resume:</label>
+          <input type="file" accept=".pdf,.doc,.docx">
+          <p class="file-info">Accepted formats: PDF, DOC, DOCX</p>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group full-width">
+          <label>Bio:</label>
+          <textarea rows="4" placeholder="Tell us about yourself..."></textarea>
+        </div>
+
+        <!-- Select Dropdown -->
+        <div class="form-group">
+          <label>Country:</label>
+          <select>
+            <option value="">Select Country</option>
+            <option>USA</option>
+            <option>Canada</option>
+            <option>UK</option>
+            <option>Australia</option>
+            <option>Germany</option>
+            <option>Philippines</option>
+          </select>
+        </div>
+
+        <!-- Search Input -->
+        <div class="form-group">
+          <label>Province</label>
+          <input type="search" placeholder="Province here or City where you belong...">
+        </div>
+
+        <!-- Checkboxes -->
+        <fieldset class="full-width">
+          <legend>Preferences:</legend>
+          <div class="checkbox-group">
+            <label>
+              <input type="checkbox" name="newsletter"> Newsletter
+            </label>
+            <label>
+              <input type="checkbox" name="updates"> Updates
+            </label>
+            <label>
+              <input type="checkbox" name="notifications"> Notifications
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Radio Buttons -->
+        <fieldset class="full-width">
+          <legend>Contact Method:</legend>
+          <div class="radio-group">
+            <label>
+              <input type="radio" name="contact" value="email" checked> Email
+            </label>
+            <label>
+              <input type="radio" name="contact" value="phone"> Phone
+            </label>
+            <label>
+              <input type="radio" name="contact" value="sms"> SMS
+            </label>
+            <label>
+              <input type="radio" name="contact" value="mail"> Postal Mail
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Buttons -->
+        <div class="form-group full-width button-group">
+          <button type="reset" class="reset-btn">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
+
+  <P>  <a href="login.html" >Already have an account? Log In</a></P>
+  </div>
+</body>
+</html>
